@@ -30,7 +30,7 @@
     font-family: 'Noto Serif Georgian';
     font-style: normal;
     font-weight: 600;
-    src: url('../fonts/noto-serif-georgian-v23-latin-600.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/noto-serif-georgian-v23-latisn-600.eot'); /* IE9 Compat Modes */
     src: url('../fonts/noto-serif-georgian-v23-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
          url('../fonts/noto-serif-georgian-v23-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
          url('../fonts/noto-serif-georgian-v23-latin-600.woff') format('woff'), /* Modern Browsers */
@@ -77,11 +77,21 @@
          url('../fonts/noto-sans-georgian-v36-latin-600.svg#NotoSansGeorgian') format('svg'); /* Legacy iOS */
   }
 
+:root {
+    --color-white: #FFFFFF;
+    --color-white-light: #F6F6F6;
+    --color-white-hover: #FAFAFA;
+    --color-gray: #CDCDCD;
+    --color-primary: #F1CDB3;
+ 
+    --color-dark-light: #545454;
+    --color-dark: #292929;
+}
 * {
     margin: 0;
 }
 body {
-    background-color: #545454;
+    background-color: var(--color-dark-light);
     box-sizing: border-box;
     margin: 0;
 }
@@ -90,23 +100,40 @@ body {
     margin: 0 auto;
     position: relative;
 }
+h1 {
+    font-family: Georgia;
+    font-style: normal;
+    font-size: 44px;
+    line-height: 130%;
+}
+h2 {
+    font-family: Georgia;
+    font-style: normal;
+    font-size: 35px;
+    line-height: 130%;
+    letter-spacing: 2.1px;
+}
+button,
 a {
-    font-family: 'Georgia';
+    font-family: Georgia;
     font-style: normal;
     font-weight: 400;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: 1.02px;
     text-decoration: none;
-    color: #CDCDCD;
+    color: var(--color-dark);
     transition: 0.2s linear;
 }
 li {
     list-style-type: none
 }
-p,
-h1 {
-    font-family: 'Georgia';
+p {
+    font-family: Arial;
     font-style: normal;
     font-weight: 400;
-    color: #545454;
+    font-size: 15px;
+    line-height: 160%;
 }
 
 /* Header style start */
@@ -116,81 +143,61 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    width: 100%;
+    width: 1200px;
     position: absolute;
     top: 30px;
     left: 40px;
     z-index: 5;
 }
-.header__logo-title {
+.header__logo > a > p:nth-child(1) {
     display: block;
     font-size: 32px;
     line-height: 35px;
     letter-spacing: 0.06em;
-    color: #F1CDB3;
-    text-shadow: 1px 0 1px #000,
-    0 1px 1px #000,
-    -1px 0 1px #000,
-    0 -1px 1px #000;
+    color: var(--color-primary);
+    text-shadow: 1px 0 1px #000, 0 1px 1px #000, -1px 0 1px #000, 0 -1px 1px #000;
     margin-bottom: 10px;
 }
-.header__logo-desc {
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
+.header__logo > a > p:nth-child(2) {
     font-size: 13px;
     line-height: 15px;
     letter-spacing: 0.1em;
-    color: #FFFFFF;
+    color: var(--color-white);
     margin-left: 5px;
-    text-shadow: 1px 0 1px #000,
-    0 1px 1px #000,
-    -1px 0 1px #000,
-    0 -1px 1px #000;
+    text-shadow: 1px 0 1px #000, 0 1px 1px #000, -1px 0 1px #000, 0 -1px 1px #000;
 }
+
+
+
+
 .header__nav-items {
     display: flex;
     flex-wrap: wrap;
-    color: #CDCDCD;
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
     margin-right: 2px;
     margin-bottom: 5px;
 }
-.header__nav-item {
+.header__nav-items-item {
     margin-right: 35px;
 }
-.header__nav-item-link {
+.header__nav-items-item > a {
     font-family: 'Arial';
     font-size: 15px;
     line-height: 24px;
+    color: var(--color-gray);
 }
-.header__nav-item-link:hover {
-    color: #FAFAFA
+.header__nav-items-item > a:hover {
+    color: var(--color-white-hover)
 }
-.first-link {
-    cursor: default;
+.header__nav-items-item:nth-child(1) a {
+    color: var(--color-white-hover)
 }
-.header__psewdo {
-    position: relative;
-}
-.header__psewdo::before {
+.header__nav-items-item:nth-child(1) a::after {
     display: block;
     content: '';
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
     width: 100%;
     height: 3px;
-    background-color: #F1CDB3;
-}
-.header__nav-item:first-child span {
-    color: #FFFFFF;
-}
-.header__nav-item:last-child {
-    margin-right: 0px;
+    background-color: var(--color-primary);
+    transition: 0.2s linear;;
 }
 .header__lines {
     display: none;
@@ -221,7 +228,7 @@ h1 {
     max-width: 310px;
     font-size: 44px;
     line-height: 130%;
-    color: #FFFFFF;
+    color: var(--color-white);
     text-shadow: 1px 0 1px #000,
     0 1px 1px #000,
     -1px 0 1px #000,
@@ -232,7 +239,7 @@ h1 {
     font-family: Arial;
     font-size: 15px;
     line-height: 160%;
-    color: #CDCDCD;
+    color: var(--color-gray);
     margin: 0px;
     padding: 42px 0px 42px 0px;
 }
@@ -241,8 +248,8 @@ h1 {
     font-size: 17px;
     line-height: 130%;
     letter-spacing: 0.06em;
-    color: #292929;
-    background: #F1CDB3;
+    color: var(--color-dark);
+    background: var(--color-primary);
     padding-top: 15px;
     padding-bottom: 15px;
     text-align: center;
@@ -260,7 +267,7 @@ h1 {
 /* About style start */
 
 .about {
-    background-color: #FFFFFF;
+    background-color: var(--color-white);
 }
 .about__wrapper {
     padding: 77px 40px 100px 40px;
@@ -296,7 +303,7 @@ h1 {
 /* Our friends style start */
 
 .our-friends {
-    background-color: #F6F6F6;
+    background-color: var(--color-white-light);
 }
 .our-friends__wrapper {
     display: flex;
@@ -329,7 +336,7 @@ h1 {
     cursor: pointer;
 }
 .our-friends__cards-card:hover {
-    background: #FFFFFF;
+    background: var(--color-white);
 }
 .our-friends__cards-card:hover .our-friends__cards-card-btn {
     background: #FDDCC4;
@@ -351,10 +358,10 @@ h1 {
     font-size: 17px;
     line-height: 22px;
     letter-spacing: 0.06em;
-    color: #292929;
+    color: var(--color-dark);
     padding: 15px 45px;
     background-color: #FAFAFA;
-    border: 2px solid #F1CDB3;
+    border: 2px solid var(--color-primary);
     border-radius: 26px;
     cursor: pointer;
     margin-bottom: 30px;
@@ -364,9 +371,9 @@ h1 {
     font-size: 17px;
     line-height: 22px;
     letter-spacing: 0.06em;
-    color: #292929;
+    color: var(--color-dark);
     padding: 15px 45px;
-    background-color: #F1CDB3;
+    background-color: var(--color-primary);
     border: none;
     border-radius: 26px;
     cursor: pointer;
@@ -380,7 +387,7 @@ h1 {
     background: url(../img/our-friends__arrow-left.svg) no-repeat;
     background-position: center;
     background-size: 14px 6px;
-    border: 2px solid #F1CDB3;
+    border: 2px solid var(--color-primary);
     border-radius: 26px;
     cursor: default;
     position: absolute;
@@ -393,7 +400,7 @@ h1 {
     background: url(../img/our-friends__arrow-right.svg) no-repeat;
     background-position: center;
     background-size: 14px 6px;
-    border: 2px solid #F1CDB3;
+    border: 2px solid var(--color-primary);
     border-radius: 26px;
     cursor: pointer;
     transition: 0.2s linear;
@@ -415,7 +422,7 @@ h1 {
 /* Help style start */
 
 .help {
-    background-color: #FFFFFF;
+    background-color: var(--color-white);
 }
 .help__wrapper {
     padding: 80px 127px 100px;
@@ -455,7 +462,7 @@ h1 {
 /* In addition style start */
 
 .in-addition {
-    background-color: #F6F6F6;
+    background-color: var(--color-white-light);
 }
 .in-addition__wrapper {
     display: flex;
@@ -485,7 +492,7 @@ h1 {
     align-items: center;
     padding: 10px 0px 10px 0px;
     max-width: 349px;
-    background-color: #F1CDB3;
+    background-color: var(--color-primary);
     border-radius: 9px;
     margin-bottom: 20px;
     cursor: pointer;
@@ -501,7 +508,7 @@ h1 {
     font-size: 20px;
     line-height: 23px;
     letter-spacing: 0.06em;
-    color: #545454;
+    color: var(--color-dark-light);
 }
 .in-addition__right-foot {
     font-family: 'Arial';
@@ -543,7 +550,7 @@ h1 {
     font-size: 35px;
     line-height: 45px;
     letter-spacing: 0.06em;
-    color: #FFFFFF;
+    color: var(--color-white);
 }
 .footer__start-title {
     margin-bottom: 40px;
@@ -573,7 +580,7 @@ h1 {
     font-size: 20px;
     line-height: 23px;
     letter-spacing: 0.06em;
-    color: #F1CDB3;
+    color: var(--color-primary);
     transition: 0.2s linear;
 }
 .footer__start-text-text:hover,
@@ -739,7 +746,7 @@ h1 {
         display: block;
         width: 100%;
         height: 2px;
-        background-color: #F1CDB3;
+        background-color: var(--color-primary);
         position: absolute;
     }
     .first-line {
@@ -758,7 +765,7 @@ h1 {
         position: fixed;
         right: 0;
         top: 0;
-        background: #292929;
+        background: var(--color-dark);
         transform: translateX(100%);
         transition: 0.2s linear;
     }
