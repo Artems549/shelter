@@ -12,6 +12,71 @@ linksGet.forEach(link => {
   });
 });
 
+// Our friends slider
+
+
+var friendsPic = document.querySelectorAll('.our-friends__cards-card-pic img');
+var friendsName = document.querySelectorAll('.our-friends__cards-card-text h2');
+const friendsBtn = document.querySelector('.our-friends__cards-card-text a');
+// const modalWindow = document.querySelector('.our-friends__modal');
+const cardsWrap = document.querySelector('.our-friends__cards')
+
+function createNewBlock() {
+
+}
+
+
+
+
+
+const jsonObj = fetch('./cards.json')
+.then(response => response.json())
+.then(data => {
+  console.log(data[0])
+  for(let i = 0; i < data.length; i++) {
+    let card = document.createElement('div');
+    card.className = 'our-friends__cards-card';
+    
+    let cardPic = document.createElement('div');
+    cardPic.className = 'our-friends__cards-card-pic';
+    
+    let cardPicImg = document.createElement('img');
+    cardPicImg.alt = 'animal';
+    cardPicImg.src = data[i].img;
+    
+    let cardText = document.createElement('div');
+    cardText.className = 'our-friends__cards-card-text';
+    
+    let cardTextH2 = document.createElement('h2');
+    cardTextH2.innerHTML = data[i].name
+    let cardTextA = document.createElement('a');
+    cardTextA.innerHTML = 'Learn more';
+    
+    cardsWrap.appendChild(card)
+    card.appendChild(cardPic);
+    cardPic.appendChild(cardPicImg);
+    card.appendChild(cardText);
+    cardText.appendChild(cardTextH2);
+    cardText.appendChild(cardTextA);
+
+  }
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Burger menu
 
