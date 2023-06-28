@@ -15,24 +15,10 @@ linksGet.forEach(link => {
 // Our friends slider
 
 
-var friendsPic = document.querySelectorAll('.our-friends__cards-card-pic img');
-var friendsName = document.querySelectorAll('.our-friends__cards-card-text h2');
-const friendsBtn = document.querySelector('.our-friends__cards-card-text a');
-// const modalWindow = document.querySelector('.our-friends__modal');
-const cardsWrap = document.querySelector('.our-friends__cards')
-
-function createNewBlock() {
-
-}
-
-
-
-
-
-const jsonObj = fetch('./cards.json')
+fetch('./cards.json')
 .then(response => response.json())
 .then(data => {
-  console.log(data[0])
+
   for(let i = 0; i < data.length; i++) {
     let card = document.createElement('div');
     card.className = 'our-friends__cards-card';
@@ -52,16 +38,75 @@ const jsonObj = fetch('./cards.json')
     let cardTextA = document.createElement('a');
     cardTextA.innerHTML = 'Learn more';
     
-    cardsWrap.appendChild(card)
-    card.appendChild(cardPic);
-    cardPic.appendChild(cardPicImg);
-    card.appendChild(cardText);
-    cardText.appendChild(cardTextH2);
-    cardText.appendChild(cardTextA);
-
+    sliderLine.append(card)
+    card.append(cardPic);
+    cardPic.append(cardPicImg);
+    card.append(cardText);
+    cardText.append(cardTextH2);
+    cardText.append(cardTextA);
+  
   }
 
 })
+
+
+
+
+const sliderWrapper = document.querySelector('.our-friends__cards');
+const sliderLine = document.querySelector('.our-friends__cards-slider');
+const slide = document.querySelectorAll('.our-friends__cards-card');
+const buttonPrev = document.querySelector('.arrow__block span:nth-child(1)');
+const buttonNext = document.querySelector('.arrow__block span:nth-child(2)');
+let slideWidth = slide[0].offsetWidth;
+let position = 0;
+let slidesShow = 3;
+let slidesScroll = 1;
+let slidesMarginRight = 90;
+let moveSlide = slidesScroll * slideWidth + slidesMarginRight * slidesScroll;
+
+for(let i = 0; i < slide.length - 1; i++) {
+  slide[i].style.marginRight = `${slidesMarginRight}px`
+}
+buttonPrev.addEventListener('click', prevSlide);
+buttonNext.addEventListener('click', nextSlide);
+function nextSlide() {
+  position -= moveSlide;
+  setPosition();
+  checkPrevBtn();
+  checkNextBtn();
+}
+function prevSlide() {
+  position += moveSlide;
+  setPosition();
+  checkPrevBtn();
+  checkNextBtn();
+}
+function setPosition() {
+  sliderLine.style.transform = `translateX(${position}px)`
+}
+function checkPrevBtn() {
+  if(position === 0) {
+    buttonPrev.removeEventListener('click', prevSlide)
+  } else {
+    buttonPrev.addEventListener('click', prevSlide);
+  }
+  buttonPrev.disabled = false;
+}
+function checkNextBtn() {
+  if(position <= -(slide.length - slidesShow) * slideWidth) {
+    buttonNext.removeEventListener('click', nextSlide)
+  } else {
+    buttonNext.addEventListener('click', nextSlide)
+
+  }
+
+}
+checkPrevBtn()
+checkNextBtn()
+
+
+
+
 
 
 
