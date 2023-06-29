@@ -18,13 +18,23 @@ const sliderWrapper = document.querySelector('.our-friends__cards');
 const sliderLine = document.querySelector('.our-friends__cards-slider');
 const buttonPrev = document.querySelector('.arrow__block span:nth-child(1)');
 const buttonNext = document.querySelector('.arrow__block span:nth-child(2)');
-let position = 0;
-let slidesShow = 3;
-let slidesScroll = 1;
-let slidesMarginRight = 90;
-let slideWidth = 270
-let moveSlide = slidesScroll * slideWidth + slidesMarginRight * slidesScroll;
+const windowWidth = window.innerWidth
 
+let position = 0;
+let slidesScroll = 1;
+let slideWidth = 270
+
+if(windowWidth > 1200) {
+  var slidesShow = 3;
+  var slidesMarginRight = 90;
+} else if(windowWidth <= 1200 && windowWidth > 600) {
+  var slidesShow = 2;
+  var slidesMarginRight = 40;
+} else {
+  var slidesShow = 1;
+  var slidesMarginRight = 40;
+}
+let moveSlide = slidesScroll * slideWidth + slidesMarginRight * slidesScroll;
 fetch('./cards.json')
 .then(response => response.json())
 .then(data => {
@@ -58,14 +68,12 @@ fetch('./cards.json')
   buttonNext.addEventListener('click', nextSlide);
   function nextSlide() {
     position -= moveSlide;
-    console.log(position)
     setPosition();
     checkPrevBtn();
     checkNextBtn();
   }
   function prevSlide() {
     position += moveSlide;
-    console.log(moveSlide)
     setPosition();
     checkPrevBtn();
     checkNextBtn();
@@ -75,25 +83,66 @@ fetch('./cards.json')
   }
   function checkPrevBtn() {
     if(position === 0) {
-      buttonPrev.removeEventListener('click', prevSlide)
+      buttonPrev.removeEventListener('click', prevSlide);
+      buttonPrev.classList.add('remove');
+      buttonPrev.style.pointerEvents = 'none';
     } else {
       buttonPrev.addEventListener('click', prevSlide);
+      buttonPrev.classList.remove('remove');
+      buttonPrev.style.pointerEvents = 'auto';
     }
-    buttonPrev.disabled = false;
   }
   function checkNextBtn() {
-    console.log(position)
     if(position <= -(slide.length - slidesShow) * (slideWidth + slidesMarginRight)) {
-      buttonNext.removeEventListener('click', nextSlide)
+      buttonNext.removeEventListener('click', nextSlide);
+      buttonNext.classList.add('remove');
+      buttonNext.style.pointerEvents = 'none';
+
     } else {
-      buttonNext.addEventListener('click', nextSlide)
+      buttonNext.addEventListener('click', nextSlide);
+      buttonNext.classList.remove('remove');
+      buttonNext.style.pointerEvents = 'auto';
     }
   }
   checkPrevBtn()
   checkNextBtn()
 })
 
+// Burger
 
+const navMenu = document.querySelector('.header__nav');
+const burgerIcon = document.querySelector('.header__lines');
+const overlay = document.querySelector('.overlay');
+const navMenuItem = document.querySelectorAll('.header__nav-items-item')
+const body = document.querySelector('.body')
+
+navMenu.addEventListener('click', addOrRemove)
+burgerIcon.addEventListener('click', addOrRemove)
+overlay.addEventListener('click', addOrRemove)
+
+
+
+
+function addOrRemove() {
+  if(navMenu.classList.contains('active')) {
+    navMenu.classList.remove('active');
+    burgerIcon.classList.remove('active');
+    overlay.classList.remove('active');
+    body.classList.remove('active');
+  } else if (!navMenu.classList.contains('active')) {
+    navMenu.classList.add('active');
+    burgerIcon.classList.add('active');
+    overlay.classList.add('active');
+    body.classList.add('active');
+  }
+}
+
+function addActive() {
+
+}
+function removeActive() {
+
+}
 
 
 
