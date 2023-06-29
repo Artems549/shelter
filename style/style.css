@@ -902,7 +902,48 @@ p {
     }
     .our-friends__wrapper {
         padding-top: 42px;
+        padding-bottom: 50px;
+    }
+    .our-friends__title {
+        margin-bottom: 42px;
+    }
+    .our-friends__cards {
+        margin-bottom: 120px;
+    }
+    .arrow__block span:nth-child(1) {
+        left: 18%;
+        bottom: 112px;
+    }
+    .arrow__block span:nth-child(2) {
+        right: 18%;
+        bottom: 112px;
+    }
+    .help__wrapper {
+        padding-top: 42px;
         padding-bottom: 42px;
+    }
+    .help__title {
+        margin-bottom: 42px;
+    }
+    .help__items {
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(5, auto);
+        justify-content: space-around;
+        row-gap: 30px;
+    }
+    .in-addition__wrapper {
+        padding-top: 42px;
+        padding-bottom: 42px;
+    }
+    .in-addition__right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer__start-title h2,
+    .footer__center-title h2 {
+        text-align: center;
     }
 }
 /*
