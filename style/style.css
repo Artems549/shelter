@@ -354,8 +354,9 @@ p {
 }
 .our-friends__cards-card-pic img {
     max-width: 270px;
-    max-height: 270px;
+    min-height: 270px;
     object-fit: cover;
+    border-radius: 9px 9px 0px 0px;
 }
 .our-friends__cards-card-text h2 {
     font-size: 20px;
@@ -453,7 +454,9 @@ p {
 }
 .our-friends__modal-pic img {
     width: 100%;
-    border-radius: 9px 0px 0px 9px;;
+    min-height: 350px;
+    object-fit: cover;
+    border-radius: 9px 0px 0px 9px;
 }
 .our-friends__modal-text {
     width: 400px;
@@ -486,12 +489,13 @@ p {
     list-style: disc;
     font-family: Georgia;
     font-size: 15px;
+    font-weight: 700;
     margin-bottom: 5px;
     color: var(--color-dark-light);
-    letter-spacing: 0.9px
+    letter-spacing: 0.9px;
 }
 .our-friends__modal-desc ul li span {
-    font-weight: 700;
+    font-weight: 400;
 }
 .our-friends__modal-desc ul li:last-child {
     margin-bottom: 0px;

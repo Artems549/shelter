@@ -106,15 +106,32 @@ fetch('./cards.json')
   checkPrevBtn()
   checkNextBtn()
 
-  // Modal windowgit
+  // Modal window
 
-  const buttonModal = document.querySelectorAll('.our-friends__cards-card-text a');
   const modalClose = document.querySelector('.our-friends__modal-close');
   const modal = document.querySelector('.our-friends__modal');
   const shadow = document.querySelector('.shadow');
+  const modalPic = document.querySelector('.our-friends__modal-pic img');
+  const modalTitleH2 = document.querySelector('.our-friends__modal-title h2')
+  const modalTitleP = document.querySelector('.our-friends__modal-title p');
+  const modalDescP = document.querySelector('.our-friends__modal-desc p');
+  const modalDescAge = document.querySelector('.our-friends__modal-desc ul li:nth-child(1) span');
+  const modalDescIno = document.querySelector('.our-friends__modal-desc ul li:nth-child(2) span');
+  const modalDescDis = document.querySelector('.our-friends__modal-desc ul li:nth-child(3) span');
+  const modalDescParas = document.querySelector('.our-friends__modal-desc ul li:nth-child(4) span');
 
-  for(let i = 0; i < buttonModal.length; i++) {
-    buttonModal[i].addEventListener('click', addOrRemoveModal)
+  for(let i = 0; i < slide.length; i++) {
+    slide[i].addEventListener('click', function() {
+      addOrRemoveModal()
+      modalPic.src = data[i].img
+      modalTitleH2.innerHTML = data[i].name
+      modalTitleP.innerHTML = data[i].breed
+      modalDescP.innerHTML = data[i].description
+      modalDescAge.innerHTML = data[i].age
+      modalDescIno.innerHTML = data[i].inoculations
+      modalDescDis.innerHTML = data[i].diseases
+      modalDescParas.innerHTML = data[i].parasites
+    })
   }
   shadow.addEventListener('click', addOrRemoveModal)
   modalClose.addEventListener('click', addOrRemoveModal)
@@ -164,10 +181,3 @@ function removeActiveBurger() {
   overlay.classList.remove('active');
   body.classList.remove('active');
 }
-// function addOrRemove() {
-//   if(navMenu.classList.contains('active')) {
-
-//   } else if (!navMenu.classList.contains('active')) {
-
-//   }
-// }
