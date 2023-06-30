@@ -1,7 +1,6 @@
 // Smooth scrolling
 
 const linksGet = document.querySelectorAll('a[href^="#"]');
-
 linksGet.forEach(link => {
   link.addEventListener('click', function(e) {
     e.preventDefault();
@@ -106,23 +105,56 @@ fetch('./cards.json')
   }
   checkPrevBtn()
   checkNextBtn()
+
+  // Modal window
+
+  const buttonModal = document.querySelectorAll('.our-friends__cards-card-text a');
+  const modalClose = document.querySelector('.our-friends__modal-close');
+  const modal = document.querySelector('.our-friends__modal');
+  const shadow = document.querySelector('.shadow');
+
+  for(let i = 0; i < buttonModal.length; i++) {
+    buttonModal[i].addEventListener('click', addOrRemoveModal)
+  }
+  shadow.addEventListener('click', addOrRemoveModal)
+  modalClose.addEventListener('click', addOrRemoveModal)
+
+  function addOrRemoveModal() {
+    if(modal.classList.contains('active')) {
+      modal.classList.remove('active');
+      shadow.classList.remove('active');
+      body.classList.remove('active');
+    } else if(!modal.classList.contains('active')) {
+      modal.classList.add('active');
+      shadow.classList.add('active');
+      body.classList.add('active');
+    }
+  }
+
 })
 
-// Burger
+
+
+
+
+
+
+
+
+
+// Burger menu
 
 const navMenu = document.querySelector('.header__nav');
 const burgerIcon = document.querySelector('.header__lines');
+const navMenuItem = document.querySelectorAll('.header__nav-items-item');
 const overlay = document.querySelector('.overlay');
-const navMenuItem = document.querySelectorAll('.header__nav-items-item')
-const body = document.querySelector('.body')
+var body = document.querySelector('.body');
 
-navMenu.addEventListener('click', addOrRemove)
+navMenuItem.forEach(function(item) {
+  item.addEventListener('click', addOrRemove)
+})
 burgerIcon.addEventListener('click', addOrRemove)
 overlay.addEventListener('click', addOrRemove)
-
-
-
-
 function addOrRemove() {
   if(navMenu.classList.contains('active')) {
     navMenu.classList.remove('active');
@@ -136,74 +168,3 @@ function addOrRemove() {
     body.classList.add('active');
   }
 }
-
-function addActive() {
-
-}
-function removeActive() {
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Burger menu
-
-// (function () {
-//   const burgerIcon = document.querySelector('.burger');
-//   const menu = document.querySelector('.header__nav');
-//   const shadow = document.querySelector('.shadow')
-//   const links = document.querySelector('.header__nav-items');
-//   const body = document.querySelector('.body');
-//   let turn = 0;
-
-// burgerIcon.addEventListener('click', () => {
-//   menu.classList.toggle('header__nav-active');
-//   if(turn === 0) {
-//     turn = 90;
-//     burgerIcon.style.transform = `rotate(${turn}deg)`;
-//     body.style.overflow = 'hidden';
-//     shadow.style.display = 'block';
-//   } else {
-//     turn = 0;
-//     burgerIcon.style.transform = `rotate(${turn}deg)`;
-//     body.style.overflow = 'visible';
-//     shadow.style.display = 'none';
-//   }
-//   links.addEventListener('click', () => {
-//     turn = 90;
-//     menu.classList.remove('header__nav-active')
-//     if(turn === 90) {
-//       turn = 0;
-//       burgerIcon.style.transform = `rotate(${turn}deg)`;
-//       body.style.overflow = 'visible';
-//       shadow.style.display = 'none';
-//     }
-//   })
-// })
-// }());
-
-
