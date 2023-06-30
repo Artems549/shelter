@@ -17,7 +17,7 @@ const sliderWrapper = document.querySelector('.our-friends__cards');
 const sliderLine = document.querySelector('.our-friends__cards-slider');
 const buttonPrev = document.querySelector('.arrow__block span:nth-child(1)');
 const buttonNext = document.querySelector('.arrow__block span:nth-child(2)');
-const windowWidth = window.innerWidth
+var windowWidth = window.innerWidth
 
 let position = 0;
 let slidesScroll = 1;
@@ -106,7 +106,7 @@ fetch('./cards.json')
   checkPrevBtn()
   checkNextBtn()
 
-  // Modal window
+  // Modal windowgit
 
   const buttonModal = document.querySelectorAll('.our-friends__cards-card-text a');
   const modalClose = document.querySelector('.our-friends__modal-close');
@@ -130,17 +130,7 @@ fetch('./cards.json')
       body.classList.add('active');
     }
   }
-
 })
-
-
-
-
-
-
-
-
-
 
 // Burger menu
 
@@ -151,20 +141,33 @@ const overlay = document.querySelector('.overlay');
 var body = document.querySelector('.body');
 
 navMenuItem.forEach(function(item) {
-  item.addEventListener('click', addOrRemove)
+  item.addEventListener('click', removeActiveBurger)
 })
-burgerIcon.addEventListener('click', addOrRemove)
-overlay.addEventListener('click', addOrRemove)
-function addOrRemove() {
+burgerIcon.addEventListener('click', function() {
   if(navMenu.classList.contains('active')) {
-    navMenu.classList.remove('active');
-    burgerIcon.classList.remove('active');
-    overlay.classList.remove('active');
-    body.classList.remove('active');
-  } else if (!navMenu.classList.contains('active')) {
-    navMenu.classList.add('active');
-    burgerIcon.classList.add('active');
-    overlay.classList.add('active');
-    body.classList.add('active');
+    removeActiveBurger();
+  } else if(!navMenu.classList.contains('active')) {
+    addActiveBurger();
   }
+})
+overlay.addEventListener('click', removeActiveBurger)
+
+function addActiveBurger() {
+  navMenu.classList.add('active');
+  burgerIcon.classList.add('active');
+  overlay.classList.add('active');
+  body.classList.add('active');
 }
+function removeActiveBurger() {
+  navMenu.classList.remove('active');
+  burgerIcon.classList.remove('active');
+  overlay.classList.remove('active');
+  body.classList.remove('active');
+}
+// function addOrRemove() {
+//   if(navMenu.classList.contains('active')) {
+
+//   } else if (!navMenu.classList.contains('active')) {
+
+//   }
+// }
