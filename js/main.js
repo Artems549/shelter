@@ -125,7 +125,7 @@ fetch('./cards.json')
       addOrRemoveModal()
       modalPic.src = data[i].img
       modalTitleH2.innerHTML = data[i].name
-      modalTitleP.innerHTML = data[i].breed
+      modalTitleP.innerHTML = data[i].type + ' - ' + data[i].breed
       modalDescP.innerHTML = data[i].description
       modalDescAge.innerHTML = data[i].age
       modalDescIno.innerHTML = data[i].inoculations
