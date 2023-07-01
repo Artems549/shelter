@@ -20,7 +20,7 @@ var cards = document.querySelector('.our-friends__items');
 
 
 
-fetch('././cards.json')
+fetch('../../cards.json')
 .then(response => response.json())
 .then(data => {
   console.log(data.length)
