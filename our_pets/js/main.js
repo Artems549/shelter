@@ -16,39 +16,36 @@ linksGet.forEach(link => {
 
 // Burger menu
 
-(function () {
-  const burgerIcon = document.querySelector('.burger');
-  const menu = document.querySelector('.header__nav');
-  const shadow = document.querySelector('.shadow')
-  const links = document.querySelector('.header__nav-items');
-  const body = document.querySelector('.body');
-  let turn = 0;
+const navMenu = document.querySelector('.header__nav');
+const burgerIcon = document.querySelector('.header__lines');
+const navMenuItem = document.querySelectorAll('.header__nav-items-item');
+const overlay = document.querySelector('.overlay');
+var body = document.querySelector('.body');
 
-burgerIcon.addEventListener('click', () => {
-  menu.classList.toggle('header__nav-active');
-  if(turn === 0) {
-    turn = 90;
-    burgerIcon.style.transform = `rotate(${turn}deg)`;
-    body.style.overflow = 'hidden';
-    shadow.style.display = 'block';
-  } else {
-    turn = 0;
-    burgerIcon.style.transform = `rotate(${turn}deg)`;
-    body.style.overflow = 'visible';
-    shadow.style.display = 'none';
-  }
-  links.addEventListener('click', () => {
-    turn = 90;
-    menu.classList.remove('header__nav-active')
-    if(turn === 90) {
-      turn = 0;
-      burgerIcon.style.transform = `rotate(${turn}deg)`;
-      body.style.overflow = 'visible';
-      shadow.style.display = 'none';
-    }
-  })
+navMenuItem.forEach(function(item) {
+  item.addEventListener('click', removeActiveBurger)
 })
-}());
+burgerIcon.addEventListener('click', function() {
+  if(navMenu.classList.contains('active')) {
+    removeActiveBurger();
+  } else if(!navMenu.classList.contains('active')) {
+    addActiveBurger();
+  }
+})
+overlay.addEventListener('click', removeActiveBurger)
+
+function addActiveBurger() {
+  navMenu.classList.add('active');
+  burgerIcon.classList.add('active');
+  overlay.classList.add('active');
+  body.classList.add('active');
+}
+function removeActiveBurger() {
+  navMenu.classList.remove('active');
+  burgerIcon.classList.remove('active');
+  overlay.classList.remove('active');
+  body.classList.remove('active');
+}
 
 
 
