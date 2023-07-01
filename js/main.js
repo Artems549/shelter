@@ -34,7 +34,7 @@ if(windowWidth > 1200) {
   var slidesMarginRight = 40;
 }
 let moveSlide = slidesScroll * slideWidth + slidesMarginRight * slidesScroll;
-fetch('../json/cards.json')
+fetch('./json/cards.json')
 .then(response => response.json())
 .then(data => {
   for(let i = 0; i < data.length; i++) {
